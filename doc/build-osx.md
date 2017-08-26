@@ -40,12 +40,12 @@ Instructions: Homebrew
 
         brew install autoconf automake berkeley-db4 libtool boost miniupnpc openssl pkg-config protobuf qt5
 
-### Building `pivxd`
+### Building `phored`
 
 1. Clone the github tree to get the source code and go into the directory.
 
-        git clone https://github.com/PIVX-Project/PIVX.git
-        cd PIVX
+        git clone https://github.com/Phore-Project/Phore.git
+        cd Phore
 
 2.  Build pivxd:
 
@@ -57,7 +57,7 @@ Instructions: Homebrew
 
         make check
 
-4.  (Optional) You can also install pivxd to your path:
+4.  (Optional) You can also install phored to your path:
 
         make install
 
@@ -69,7 +69,7 @@ Download Qt Creator from http://www.qt.io/download/. Download the "community edi
 1. Make sure you installed everything through homebrew mentioned above
 2. Do a proper ./configure --with-gui=qt5 --enable-debug
 3. In Qt Creator do "New Project" -> Import Project -> Import Existing Project
-4. Enter "pivx-qt" as project name, enter src/qt as location
+4. Enter "phore-qt" as project name, enter src/qt as location
 5. Leave the file selection as it is
 6. Confirm the "summary page"
 7. In the "Projects" tab select "Manage Kits..."
@@ -79,11 +79,11 @@ Download Qt Creator from http://www.qt.io/download/. Download the "community edi
 
 Creating a release build
 ------------------------
-You can ignore this section if you are building `pivxd` for your own use.
+You can ignore this section if you are building `phored` for your own use.
 
-pivxd/pivx-cli binaries are not included in the pivx-Qt.app bundle.
+phored/phore-cli binaries are not included in the phore-Qt.app bundle.
 
-If you are building `pivxd` or `pivx-qt` for others, your build machine should be set up
+If you are building `phored` or `phore-qt` for others, your build machine should be set up
 as follows for maximum compatibility:
 
 All dependencies should be compiled with these flags:
@@ -92,30 +92,30 @@ All dependencies should be compiled with these flags:
  -arch x86_64
  -isysroot $(xcode-select --print-path)/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk
 
-Once dependencies are compiled, see release-process.md for how the PIVX-Qt.app
+Once dependencies are compiled, see release-process.md for how the Phore-Qt.app
 bundle is packaged and signed to create the .dmg disk image that is distributed.
 
 Running
 -------
 
-It's now available at `./pivxd`, provided that you are still in the `src`
+It's now available at `./phored`, provided that you are still in the `src`
 directory. We have to first create the RPC configuration file, though.
 
-Run `./pivxd` to get the filename where it should be put, or just try these
+Run `./phored` to get the filename where it should be put, or just try these
 commands:
 
-    echo -e "rpcuser=pivxrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/PIVX/pivx.conf"
-    chmod 600 "/Users/${USER}/Library/Application Support/PIVX/pivx.conf"
+    echo -e "rpcuser=phorerpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/Phore/phore.conf"
+    chmod 600 "/Users/${USER}/Library/Application Support/Phore/phore.conf"
 
 The next time you run it, it will start downloading the blockchain, but it won't
 output anything while it's doing this. This process may take several hours;
 you can monitor its process by looking at the debug.log file, like this:
 
-    tail -f $HOME/Library/Application\ Support/PIVX/debug.log
+    tail -f $HOME/Library/Application\ Support/Phore/debug.log
 
 Other commands:
 -------
 
-    ./pivxd -daemon # to start the pivx daemon.
-    ./pivx-cli --help  # for a list of command-line options.
-    ./pivx-cli help    # When the daemon is running, to get a list of RPC commands
+    ./phored -daemon # to start the phore daemon.
+    ./phore-cli --help  # for a list of command-line options.
+    ./phore-cli help    # When the daemon is running, to get a list of RPC commands
