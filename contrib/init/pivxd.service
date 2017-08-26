@@ -1,19 +1,19 @@
 [Unit]
-Description=PIVX's distributed currency daemon
+Description=Phore's distributed currency daemon
 After=network.target
 
 [Service]
-User=pivx
-Group=pivx
+User=phore
+Group=phore
 
 Type=forking
-PIDFile=/var/lib/pivxd/pivxd.pid
+PIDFile=/var/lib/phored/phored.pid
 
-ExecStart=/usr/bin/pivxd -daemon -pid=/var/lib/pivxd/pivxd.pid \
-          -conf=/etc/pivx/pivx.conf -datadir=/var/lib/pivxd
+ExecStart=/usr/bin/phored -daemon -pid=/var/lib/phored/phored.pid \
+          -conf=/etc/phore/phore.conf -datadir=/var/lib/pivxd
 
-ExecStop=-/usr/bin/pivx-cli -conf=/etc/pivx/pivx.conf \
-         -datadir=/var/lib/pivxd stop
+ExecStop=-/usr/bin/phore-cli -conf=/etc/phore/phore.conf \
+         -datadir=/var/lib/phored stop
 
 Restart=always
 PrivateTmp=true
